@@ -1,0 +1,22 @@
+#app= Aplicación de springboot en formato jar
+app=sprbootprobe-0.0.1-SNAPSHOT.jar
+
+#pass= password de root de la base de datos
+pass=prueba
+
+#Puertos upblicados:
+#	port= puerto de entrada general, acceso al proxy
+#	portAngular= puerto del servicio de Angular
+#	portAdminer= puerto del gestor de base de datos Adminer
+#	portJava= puerto de la aplicación de sprboot (esta funcionará en el puerto interno del contenedor 8080)
+port=8000
+portAngular=8001
+portAdminer=8080
+portJava=8081
+
+#Rutas al código programado
+#	javaPath= Ubicación del código de springboot en el que está el ficheor *.jar de app
+#	angularPAth= Ubicación del código de angular donde se encuentra index.html
+javaPath=.
+angularPath=./angular/angular-products/
+

@@ -1,0 +1,14 @@
+#Previo
+# Incluir en este mismo direcotorio el fichero *.jar para poner en marcha
+# Los comandos que se realizan a continuación se ejecutan desde este directorio.
+
+#Puesta en marcha
+docker compose --env-file env-example up -d
+
+#Posibilidad de hacer un mysql -u root -p < backup.sql
+docker-compose exec mysql mysqldump --user=root --password=password myapp01 > dump_file_20221119.sql
+
+docker-compose exec mysql mysql --host=localhost --user=root --password=password myapp01 < dump_file_20221119.sql
+
+
+

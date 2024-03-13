@@ -1,0 +1,37 @@
+version: "3.1"
+services:
+  java:
+    image: example/java
+    build: ./java
+    command: "java -jar ${app}"
+    ports:
+      - ${portJava}:8080
+    volumes:
+      - ${javaPath}:/app
+
+  angular:
+    image: httpd
+    ports:
+      - ${portAngular}:80
+    volumes:
+      - ${angularPath}:/usr/local/apache2/htdocs/
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - ${portAdminer}:8080
+
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${pass}
+
+  proxy:
+    image: example/proxy
+    build: ./proxy
+    ports:
+      - ${port}:80
+
+#docker compose --env_file ./env-example up
