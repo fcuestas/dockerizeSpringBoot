@@ -1,5 +1,12 @@
 version: "3.1"
 services:
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${pass}
+      MYSQL_DATABASE: ${initialdb}
+
   java:
     image: example/java
     build: ./java
@@ -23,13 +30,6 @@ services:
     restart: always
     ports:
       - ${portAdminer}:8080
-
-  db:
-    image: mysql:8
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: ${pass}
-      MYSQL_DATABASE: "initial"
 
   proxy:
     image: example/proxy
