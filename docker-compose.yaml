@@ -3,9 +3,18 @@ services:
   db:
     image: mysql:8
     restart: always
+    volumes:
+      - /home/fcuestas/Documentos/dockerize/initial/src/main/resources:/data
     environment:
       MYSQL_ROOT_PASSWORD: ${pass}
       MYSQL_DATABASE: ${initialdb}
+    command: --init-file /data/initial.sql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=tiger 
+      start_period: 5s
+      interval: 10s
+      timeout: 5s
+      retries: 20
 
   java:
     image: example/java
@@ -16,7 +25,8 @@ services:
     volumes:
       - ${javaPath}:/app
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   angular:
     image: httpd
@@ -36,5 +46,7 @@ services:
     build: ./proxy
     ports:
       - ${port}:80
+    depends_on:
+      - java
 
 #docker compose --env_file ./env-example up
