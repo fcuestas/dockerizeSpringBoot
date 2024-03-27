@@ -8,6 +8,8 @@ services:
       - ${portJava}:8080
     volumes:
       - ${javaPath}:/app
+    depends_on:
+      - db
 
   angular:
     image: httpd
@@ -27,6 +29,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${pass}
+      MYSQL_DATABASE: "initial"
 
   proxy:
     image: example/proxy

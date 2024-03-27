@@ -1,7 +1,7 @@
-FROM ubuntu
+FROM alpine
 
 WORKDIR /app
-RUN apt-get update && apt-get install openjdk-21-jre -y
+RUN apk add --no-cache openjdk21-jre 
 COPY  *.jar . 
 #CMD [ "java -jar sprbootprobe-0.0.1-SNAPSHOT.jar" ]
 #CMD ["java -jar sprbootprobe-0.0.1-SNAPSHOT.jar"]
