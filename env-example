@@ -18,6 +18,6 @@ portJava=8081
 #Rutas al código programado
 #	javaPath= Ubicación del código de springboot en el que está el ficheor *.jar de app
 #	angularPAth= Ubicación del código de angular donde se encuentra index.html
-javaPath=/home/fcuestas/Documentos/dockerize/initial/target
-angularPath=/home/fcuestas/Documentos/dockerize/initialfrontend/dist/initialfrontend/browser
+javaPath=/root/initial
+angularPath=/root/initialfe
 
