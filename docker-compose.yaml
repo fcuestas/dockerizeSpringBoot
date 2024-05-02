@@ -4,7 +4,7 @@ services:
     image: mysql:8
     restart: always
     volumes:
-      - /home/fcuestas/Documentos/dockerize/initial/src/main/resources:/data
+      - /root/initial:/data
     environment:
       MYSQL_ROOT_PASSWORD: ${pass}
       MYSQL_DATABASE: ${initialdb}
