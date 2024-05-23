@@ -1,23 +1,24 @@
-#app= Aplicación de springboot en formato jar
-app=initial-0.0.1-SNAPSHOT.jar
 
-#pass= password de root de la base de datos 
-pass=tiger
-initialdb=initial
+dbUser=root #Usuario de la base de datos
+dbPass=tiger #Contraseña de root de la base de datos
+dbName=initial #Nombre de la base de datos
+dbPath=/root/initial #Ubicación en el host de los ficheros de la base de datos (fuera de Docker)
+dbFileName=initial.sql #Nombre del fichero de la base de datos obtenido de la exportación de la base de datos con mysqldump
+
+appJava=initial-0.0.1-SNAPSHOT.jar #Nombre del fichero de la aplicación de springboot
+javaPath=/root/initial #Ubicación en el host de los ficheros de la aplicación de springboot (fuera de Docker) en el que está el ficheor *.jar de app
+portJava=8081 #Puerto de la aplicación de springboot
+
+portAngular=8001 #Puerto de la aplicación de Angular
+angularPath=/root/initialfe #Ubicación en el host de los ficheros de la aplicación de Angular (fuera de Docker) donde se encuentra index.html
+
+portAdminer=8080 #Puerto de la aplicación de Adminer (gestor de base de datos)
+
+portProxy=8000 #Puerto de entrada general, acceso al proxy
 
 #Puertos upblicados:
-#	port= puerto de entrada general, acceso al proxy
+#	portProxy= puerto de entrada general, acceso al proxy
 #	portAngular= puerto del servicio de Angular
 #	portAdminer= puerto del gestor de base de datos Adminer
 #	portJava= puerto de la aplicación de sprboot (esta funcionará en el puerto interno del contenedor 8080)
-port=8000
-portAngular=8001
-portAdminer=8080
-portJava=8081
-
-#Rutas al código programado
-#	javaPath= Ubicación del código de springboot en el que está el ficheor *.jar de app
-#	angularPAth= Ubicación del código de angular donde se encuentra index.html
-javaPath=/root/initial
-angularPath=/root/initialfe
-
+#   los valores de estos puertos deben ser distintos para evitar conflictos
