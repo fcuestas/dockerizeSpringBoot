@@ -1,14 +1,27 @@
-#Previo
-# Incluir en este mismo direcotorio el fichero *.jar para poner en marcha
-# Los comandos que se realizan a continuación se ejecutan desde este directorio.
+# Previo
+#   Copiar dokerizeSpringBoot en la máquina donde se va a desplegar
+#   Configurar el fichero env-example con los valores adecuados
+#   Copiar: 
+#     el fichero *.sql de la base de datos para que pueda cargarse en [dbPath]
+#     el fichero *.jar para poner en marcha SpringBoot en [javaPath]
+#     el build de angular en [angularPath]
+# Los comandos que se realizan a continuación se ejecutan desde el directorio donde está ubicado docker-compose.yaml
 
-#Puesta en marcha
-docker compose --env-file env-example up -d
+# Puesta en marcha
+docker compose --env-file ./env-example up
 
-#Posibilidad de hacer un mysql -u root -p < backup.sql
+# Procedimiento de exportación para hacer un backup de base de datos del contenedor:
 docker-compose exec mysql mysqldump --user=root --password=password myapp01 > dump_file_20221119.sql
 
+# Importación manual (recuperación) de la imagen sql exportada previamente:
 docker-compose exec mysql mysql --host=localhost --user=root --password=password myapp01 < dump_file_20221119.sql
 
 
 
+# Limpieza del entorno para empezar de cero
+# Eliminar los contenedores que se arrancaron y estan parados
+#    docker container prune # Decir yes para borrar todos los contenedores parados
+# Eliminar las imágenes creadas:
+#    docker image rm example/proxy
+#    docker image rm example/java
+#

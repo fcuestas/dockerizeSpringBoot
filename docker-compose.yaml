@@ -4,13 +4,13 @@ services:
     image: mysql:8
     restart: always
     volumes:
-      - /root/initial:/data
+      - ${dbPath}:/data
     environment:
-      MYSQL_ROOT_PASSWORD: ${pass}
-      MYSQL_DATABASE: ${initialdb}
-    command: --init-file /data/initial.sql
+      MYSQL_ROOT_PASSWORD: ${dbPass}
+      MYSQL_DATABASE: ${dbName}
+    command: --init-file /data/${dbFileName}
     healthcheck:
-      test: mysqladmin ping -h 127.0.0.1 -u root --password=tiger 
+      test: mysqladmin ping -h 127.0.0.1 -u ${dbUser} --password=${dbPass} 
       start_period: 5s
       interval: 10s
       timeout: 5s
@@ -19,7 +19,7 @@ services:
   java:
     image: example/java
     build: ./java
-    command: "java -jar ${app}"
+    command: "java -jar ${appJava}"
     ports:
       - ${portJava}:8080
     volumes:
@@ -45,8 +45,7 @@ services:
     image: example/proxy
     build: ./proxy
     ports:
-      - ${port}:80
+      - ${portProxy}:80
     depends_on:
       - java
 
-#docker compose --env_file ./env-example up
