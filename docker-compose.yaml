@@ -1,14 +1,19 @@
-version: "3.1"
+version: "3.2"
 services:
   db:
     image: mysql:8
     restart: always
     volumes:
       - ${dbPath}:/data
+      - ${dbPath}/${dbFileName}:/docker-entrypoint-initdb.d/init.sql:ro
+      # Incluir la siguiente línea si se quieren conservar los cambios en la base de datos para la próxima vez que se quiera lanzar el docke compose
+      # Cuando se vuelva a poner en marcha por segunda vez pasa de la inicialización de initial.sql
+      # Si se quiere inicializar de nuevo hay que eliminar el volumen con: docker volume rm dockerizeSpringBoot_mysql_data
+      - mysql_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${dbPass}
       MYSQL_DATABASE: ${dbName}
-    command: --init-file /data/${dbFileName}
+    # command: --init-file /data/${dbFileName}
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u ${dbUser} --password=${dbPass} 
       start_period: 5s
@@ -49,3 +54,5 @@ services:
     depends_on:
       - java
 
+volumes:
+  mysql_data:
