@@ -39,6 +39,9 @@ services:
       - ${portAngular}:80
     volumes:
       - ${angularPath}:/usr/local/apache2/htdocs/
+      # Configuración de apache para que sirva correctamente httpd
+      - ./httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      
 
   adminer:
     image: adminer
