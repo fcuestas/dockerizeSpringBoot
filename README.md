@@ -1,15 +1,15 @@
 # dockerizeSpringBoot
 # Composición de docker para desplegar un entorno que consiste en:
-#   - Frontend de Angular
-#   - Backend de Sepringboot
-#   - Base de datos MySQL
-#   - Gestores de base de datos: Adminer y phpMyAdmin
+   - Frontend de Angular
+   - Backend de Sepringboot
+   - Base de datos MySQL
+   - Gestores de base de datos: Adminer y phpMyAdmin
 #
-# initialfe: Carpeta que incluye código de prueba de Angular. (Sustituye por tu propio código)
-# initialbe: Carpeta que incluye código de prueba de Sprngboot y fichero de inicialización de la base de datos (Sustituye por tu propio código)
+ initialfe: Carpeta que incluye código de prueba de Angular. (Sustituye por tu propio código)
+ initialbe: Carpeta que incluye código de prueba de Sprngboot y fichero de inicialización de la base de datos (Sustituye por tu propio código)
 #
-# Para poner en marcha el ejemplo modificar en env-example la variable basepath
-# Para poner en marcha tu propio código incluye tu código en las carpetas correspondientes y ajusta los valores en env-example
+ Para poner en marcha el ejemplo modificar en env-example la variable basepath
+ Para poner en marcha tu propio código incluye tu código en las carpetas correspondientes y ajusta los valores en env-example
 # 
 
 # Los comandos que se realizan a continuación se ejecutan desde este directorio.
