@@ -1,18 +1,23 @@
+#Para poner en marcha el ejemplo sólo hay que ajustar este valor
+basepath=/path/to/dockerizeSpringBoot #Ubicación en el host de los ficheros de la composición de Docker ( se recomienda colocar fuera de esta carpeta de Docker para tus cambios )
+
+# Para ejecutar tu propio código debes crear las carpetas con tu código y ajustar los siguientes valores según tu proyecto
 
 dbUser=root #Usuario de la base de datos
 dbPass=tiger #Contraseña de root de la base de datos
 dbName=initial #Nombre de la base de datos
-dbPath=/root/initial #Ubicación en el host de los ficheros de la base de datos (fuera de Docker)
+dbPath=${basepath}/initialbe #Ubicación en el host de los ficheros de la base de datos ( recuerda crearla para tu propio código )
 dbFileName=initial.sql #Nombre del fichero de la base de datos obtenido de la exportación de la base de datos con mysqldump
 
 appJava=initial-0.0.1-SNAPSHOT.jar #Nombre del fichero de la aplicación de springboot
-javaPath=/root/initial #Ubicación en el host de los ficheros de la aplicación de springboot (fuera de Docker) en el que está el ficheor *.jar de app
+javaPath=${basepath}/initialbe #Ubicación en el host de los ficheros de la aplicación de springboot (recuerda crearla para tu propio código ) en el que está el ficheor *.jar de app
 portJava=8081 #Puerto de la aplicación de springboot
 
 portAngular=8001 #Puerto de la aplicación de Angular
-angularPath=/root/initialfe #Ubicación en el host de los ficheros de la aplicación de Angular (fuera de Docker) donde se encuentra index.html
+angularPath=${basepath}/initialfe #Ubicación en el host de los ficheros de la aplicación de Angular (recuerda crearla para tu propio código ) donde se encuentra index.html
 
-portAdminer=8080 #Puerto de la aplicación de Adminer (gestor de base de datos)
+portPMA=8800 #Puerto de la aplicación de phpMyAdmin (gestor de base de datos)
+portAdminer=8801 #Puerto de la aplicación de Adminer (gestor de base de datos)
 
 portProxy=8000 #Puerto de entrada general, acceso al proxy
 
@@ -20,5 +25,6 @@ portProxy=8000 #Puerto de entrada general, acceso al proxy
 #	portProxy= puerto de entrada general, acceso al proxy
 #	portAngular= puerto del servicio de Angular
 #	portAdminer= puerto del gestor de base de datos Adminer
+#   portPMA= puerto del gestor de base de datos phpMyAdmin
 #	portJava= puerto de la aplicación de sprboot (esta funcionará en el puerto interno del contenedor 8080)
 #   los valores de estos puertos deben ser distintos para evitar conflictos

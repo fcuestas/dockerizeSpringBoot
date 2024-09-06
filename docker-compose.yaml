@@ -42,12 +42,17 @@ services:
       # Configuración de apache para que sirva correctamente httpd
       - ./httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf
       
-
   adminer:
     image: adminer
-    restart: always
     ports:
       - ${portAdminer}:8080
+      
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - ${portPMA}:80
+    environment: 
+      - PMA_ARBITRARY=1
 
   proxy:
     image: example/proxy

@@ -2,9 +2,10 @@
 #   Copiar dokerizeSpringBoot en la máquina donde se va a desplegar
 #   Configurar el fichero env-example con los valores adecuados
 #   Copiar: 
-#     el fichero *.sql de la base de datos para que pueda cargarse en [dbPath]
-#     el fichero *.jar para poner en marcha SpringBoot en [javaPath]
-#     el build de angular en [angularPath]
+#     el fichero *.sql de la base de datos para que pueda cargarse en [dbPath] - Ejemplo initial.sql dentro de ./initialbe
+#     el fichero *.jar para poner en marcha SpringBoot en [javaPath] - Ejemplo initial.sql dentro de ./initialbe 
+#     el build de angular en [angularPath] - Ejemplo dentro de ./initialfe
+#
 # Los comandos que se realizan a continuación se ejecutan desde el directorio donde está ubicado docker-compose.yaml
 
 # Puesta en marcha
@@ -24,4 +25,5 @@ docker-compose exec mysql mysql --host=localhost --user=root --password=password
 # Eliminar las imágenes creadas:
 #    docker image rm example/proxy
 #    docker image rm example/java
-#
+# Eliminar volumen de la base de datos que se ha creado
+#    docker volume rm [dockerizeSpringBoot]_mysql_data
