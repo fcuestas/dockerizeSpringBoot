@@ -14,10 +14,10 @@
 
 # Los comandos que se realizan a continuación se ejecutan desde este directorio.
 
-Puesta en marcha   
+## Puesta en marcha   
 docker compose --env-file env-example up -d   
 
-Posibilidad de hacer un mysql -u root -p < backup.sql   
+## Posibilidad de hacer un mysql -u root -p < backup.sql   
 docker-compose exec mysql mysqldump --user=root --password=password myapp01 > dump_file_20221119.sql   
 
 docker-compose exec mysql mysql --host=localhost --user=root --password=password myapp01 < dump_file_20221119.sql   
@@ -25,13 +25,13 @@ docker-compose exec mysql mysql --host=localhost --user=root --password=password
 
 # ADVERTENCIA: Cuando realices cambios es importante que hagas una limpieza del entorno para que tengan efecto:
 
- Limpieza del entorno para empezar de cero   
- Eliminar los contenedores que se arrancaron y estan parados   
+## Limpieza del entorno para empezar de cero   
+### Eliminar los contenedores que se arrancaron y estan parados   
     docker container prune # Decir yes para borrar todos los contenedores parados   
- Eliminar las imágenes creadas:   
+### Eliminar las imágenes creadas:   
     docker image rm example/proxy   
     docker image rm example/java   
- Eliminar volumen de la base de datos que se ha creado   
+### Eliminar volumen de la base de datos que se ha creado   
     docker volume rm [dockerizeSpringBoot]_mysql_data   
    
  Para más información lee el fichero info.txt  
